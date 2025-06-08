@@ -102,7 +102,7 @@ Az UML ábra nem tartalmazza a konstruktorokat és a destruktorokat. (Ez a TERV 
 A program megvalósítása egy sablon osztály megvalósítását, egy `String`, egy `Koltseg` osztály, egy `KoltsegLista` osztály, egy `Datum` oszály, egy vezérlés a programhoz és egy tesztprogram elkészítését igényelte. Az eredeti tervtől eltérve a `KoltsegLista` osztályom nem származik a `Vektor` osztályből, hanem tartalmazza, ennek megfelelően megvalósításra kerültek az `KoltsegLista` oszályban az indexelő operátorok illetve a length függvény és lett egy find függvénye is, amivel id alapján könnyen meg lehet mondani, hogy egy adott elem benne van-e a listában. Emellett a `Vektor` osztály megkapta a törlés függvényt, amiből a törölni kívánt elem pointerét beadva lehet törölni. A `String` osztály bővült a split függvénnyel, ami a szöveget tudja egy bizonyos karakter mentén feldarabolni, ezt korábban a fájlmegnyitásban csináltam, de logikusabbnak tűnt, ha a `String` osztály ezt kezeli, mivel többször is használom és stringen kell végrehajtani. Valamint tudja kezelni a `toInt()` függvényem ezután már a negatív számokat is. Ezen kívül a `Datum` osztálynak szükségesek voltak getter függvények, amikkel meg lehet kapni az évet, a hónapot és a napot. Mind a `String`-ben mind a `Vektor`-ban a hosszát nyilvántartó változókat `size_t` típusúra cseréltem és ennek megfelelően az indexelők is ezt a típust várják. A fájlkezeléshez végül egy osztályt készítettem, aminek egyszerűen elég definiáláskor megadni a fájlnevet és utána könnyen végezhető vele olvasás illetve írás. A teszteléshez használom az `std::stringstream`  külső könyvtárat a kimenet ellenőrzéséhez valamit a teszteseteket a _gtest_lite_-al ellenőrzöm.
 
 Így a megvalósítás után a következőképp néznek ki az osztályok és a köztük lévő kapcsolatok:
-![[dLJ1ZjCm4BttAuOULd4tEIp7Y5OhiKYiMC61mWMXbHjRhHNNZcodWY3-dIJsU9qsAe9JxJTlNiRlsRstZXhN7kNYbJlm8uT6Kg4MbQJMmWFjA_1h0L00FvKWb1lN1wreyx9DDhU-9oF9EdJcIHkiuIw7T9Ssi18-EoFKteEwuOOwRJPzmJD82JkjvRIwlbf-SxrwlNazNzvpz-wK4N_s0BmVpdY6VKoH0codQys7HfGgu4Ib.png]]
+![[uml.png]]
 ## 5. Főbb Osztályok
 ### 5.1 `class Datum` - `datum.cpp` /  `datum.h`
 A dátumok kezelésére és tárolására szolgáló objektum. Az osztályban tárolt dátumok között könnyen végezhető összehasonlítás és létrehozás előtt ellenőrzi, hogy valós-e az adott dátum.
@@ -257,8 +257,8 @@ A program a beépített kivételeken kívül használ :
 | `HibasBemenet` | Helytelen felhasználói input (pl. üres leírás) | std::invalid_argument |
 | `MemoriaHiba`  | Memóriafoglalási hiba                          | std::invalid_argument |
 | `FileHiba`     | Fájl megnyitása/olvasása/írása sikertelen      | std::runtime_error    |
-|                |                                                |                       |
-![[VLF1Zjem4BtxAznJGnj-05K8LLLL2LKzW7f5JZ8YNZisiYUiO7S_OYzxvyWFy0FH_jTw2HaPoP2Rn--DttipcNaK3jj6iozOGmDyeuKqZ7tbSxdjZWWQ52kry9x_aONmlqG0yoV6m_SzAcMbDHvvMGltRSHUOifYBuX1bNk4dz200IHEN4pJVaiDdwY1GeKq_2yqraaHCwYM88KmkZVNdPH-VwswesTH4kFdAVTOJIRIR8MM 1.png]]
+
+![[hibakezeles.png]]
 
 ---
 
