@@ -94,7 +94,7 @@ A kilépéskor leáll a program.
 ## 3. Objektum Terv:
 
 Egy költség a Koltseg osztályban lesz eltárolva, ez használni fogja a String és a Datum osztályt. A String osztály dinamikusan foglal memóriát a karakterláncnak, amit minden alkalommal bővít. Lesz neki indexelő operátor, értékadó operátor és emiatt copy constructora, destruktora, egyenlőséget ellenőrző operátora és += operátora illetve egy include függvénye ami megmondja egy másik karakterláncról, hogy benne van-e a stringben valamint lesz egy olyan függvény ami stringből előjel nélküli int-be vált valamint egy olyan ami Stringből előjel nélküli doublebe vált. A Datum osztály az évet, a hónapot és a napot tudja tárolni, ehhez lesz egy összehasonlító operátora amit Datummal hasonlít össze illetve egy egyenlőséget ellenőrző operátor. A költségek egy láncolt listában lesznek tárolva. Ennek lesz egy push tagfüggvénye amivel hozzáad a végéhez egy új elemet, lesz egy torol függvénye ami id alapján kivesz egy elemet a listából. Lesz indexelő operátora amivel megkapható az i-edik eleme a listának, ez túlindexeles esetén hibát fog dobni. A kiir függvény paraméter nélküli függvénye kiírja az összes költséget, a paraméteres pedig a paraméterként kapott tól, ig Dátum közötti költséget írja ki. A kiírOsszeg függvény ez előzőhöz hasonlóan paraméter nélkül az összes költség összegének szummáját írja ki, a paraméteres a két dátum közöttit. A szerkeszt függvény felülírja a paraméterként kapott költséget a listában és a destruktora felaszabadítja a listát. A Koltseg, a Datum és a String függvénynek mind lesz egy inserter operátora amit majd a standard kimenetra íráshoz fog használni. Ezen kívül lesz a String osztálynak egy beolvasó operátora is.
-![[prog2nagyhaziUMLSkeleton.drawio.png]]
+![regi-uml-abra](https://github.com/BenceGyurus/BME-info-prog2-nagyhazi/blob/main/prog2nagyhaziUML.drawio.png)
 Az UML ábra nem tartalmazza a konstruktorokat és a destruktorokat. (Ez a TERV UML árbrája)
 
 ---
@@ -102,7 +102,7 @@ Az UML ábra nem tartalmazza a konstruktorokat és a destruktorokat. (Ez a TERV 
 A program megvalósítása egy sablon osztály megvalósítását, egy `String`, egy `Koltseg` osztály, egy `KoltsegLista` osztály, egy `Datum` oszály, egy vezérlés a programhoz és egy tesztprogram elkészítését igényelte. Az eredeti tervtől eltérve a `KoltsegLista` osztályom nem származik a `Vektor` osztályből, hanem tartalmazza, ennek megfelelően megvalósításra kerültek az `KoltsegLista` oszályban az indexelő operátorok illetve a length függvény és lett egy find függvénye is, amivel id alapján könnyen meg lehet mondani, hogy egy adott elem benne van-e a listában. Emellett a `Vektor` osztály megkapta a törlés függvényt, amiből a törölni kívánt elem pointerét beadva lehet törölni. A `String` osztály bővült a split függvénnyel, ami a szöveget tudja egy bizonyos karakter mentén feldarabolni, ezt korábban a fájlmegnyitásban csináltam, de logikusabbnak tűnt, ha a `String` osztály ezt kezeli, mivel többször is használom és stringen kell végrehajtani. Valamint tudja kezelni a `toInt()` függvényem ezután már a negatív számokat is. Ezen kívül a `Datum` osztálynak szükségesek voltak getter függvények, amikkel meg lehet kapni az évet, a hónapot és a napot. Mind a `String`-ben mind a `Vektor`-ban a hosszát nyilvántartó változókat `size_t` típusúra cseréltem és ennek megfelelően az indexelők is ezt a típust várják. A fájlkezeléshez végül egy osztályt készítettem, aminek egyszerűen elég definiáláskor megadni a fájlnevet és utána könnyen végezhető vele olvasás illetve írás. A teszteléshez használom az `std::stringstream`  külső könyvtárat a kimenet ellenőrzéséhez valamit a teszteseteket a _gtest_lite_-al ellenőrzöm.
 
 Így a megvalósítás után a következőképp néznek ki az osztályok és a köztük lévő kapcsolatok:
-![[uml.png]]
+![uml-abra](https://github.com/BenceGyurus/BME-info-prog2-nagyhazi/blob/main/uml.png)
 ## 5. Főbb Osztályok
 ### 5.1 `class Datum` - `datum.cpp` /  `datum.h`
 A dátumok kezelésére és tárolására szolgáló objektum. Az osztályban tárolt dátumok között könnyen végezhető összehasonlítás és létrehozás előtt ellenőrzi, hogy valós-e az adott dátum.
@@ -258,7 +258,7 @@ A program a beépített kivételeken kívül használ :
 | `MemoriaHiba`  | Memóriafoglalási hiba                          | std::invalid_argument |
 | `FileHiba`     | Fájl megnyitása/olvasása/írása sikertelen      | std::runtime_error    |
 
-![[hibakezeles.png]]
+![hibakezeles](https://github.com/BenceGyurus/BME-info-prog2-nagyhazi/blob/main/hibakezeles.png)
 
 ---
 
